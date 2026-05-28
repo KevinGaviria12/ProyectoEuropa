@@ -1,0 +1,66 @@
+<app-header></app-header>
+
+<div class="login-wrapper" [ngStyle]="{ 'background-color': mode() === 'login' ? '#e6f2ff' : '#e6ffe6' }">
+  <!-- [ngStyle]: Cambia el color de fondo según el modo -->
+
+  <div class="login-card" [ngClass]="{ 'login-mode': mode() === 'login', 'register-mode': mode() === 'register' }">
+    <!-- [ngClass]: Aplica una clase distinta según el modo -->
+
+    <!-- @if: Renderizado condicional según el modo -->
+    @if (mode() === 'login') {
+    <h2>Iniciar Sesión</h2>
+
+    <!-- LOGIN FORM -->
+    <form (ngSubmit)="login()" novalidate>
+      <label for="username">Usuario</label>
+      <input id="username" name="username" [value]="username()" (input)="username.set($any($event.target).value)"
+        required placeholder="ej: miusuario">
+
+      <label for="password">Contraseña</label>
+      <input id="password" name="password" type="password" [value]="password()"
+        (input)="password.set($any($event.target).value)" required placeholder="tu contraseña">
+
+      <button type="submit" class="btn">Entrar</button>
+    </form>
+    }
+
+    @if (mode() === 'register') {
+    <h2>Crear Cuenta</h2>
+
+    <!-- REGISTER FORM -->
+    <form (ngSubmit)="register()" novalidate>
+      <label for="regUser">Usuario</label>
+      <input id="regUser" name="regUser" [value]="regUser()" (input)="regUser.set($any($event.target).value)" required
+        placeholder="elige un usuario">
+
+      <label for="regPassword">Contraseña</label>
+      <input id="regPassword" name="regPassword" type="password" [value]="regPassword()"
+        (input)="regPassword.set($any($event.target).value)" required placeholder="elige una contraseña">
+
+      <button type="submit" class="btn">Registrarse</button>
+    </form>
+    }
+
+    <!-- Mensaje dinámico -->
+    @if (message()) {
+    <p class="message">{{ message() }}</p>
+    }
+
+    <!-- Cambiar entre login y registro -->
+    <div class="switch">
+      <button type="button" (click)="toggleMode()" class="link">
+        {{ mode() === 'login'
+        ? '¿No tienes cuenta? Regístrate'
+        : '¿Ya tienes cuenta? Inicia sesión' }}
+      </button>
+    </div>
+
+    <!-- @for: Mostrar tips dinámicamente -->
+    <ul>
+      @for (tip of tips; track tip) {
+      <li>{{ tip }}</li>
+      }
+    </ul>
+
+  </div>
+</div>

@@ -1,0 +1,119 @@
+
+.navbar {
+  width: 100%;
+  margin: 0;
+  padding: 0.8rem 0;
+  background: linear-gradient(90deg, #003366, #0059b3);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  display: block;
+  box-sizing: border-box;
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: none;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  box-sizing: border-box;
+}
+
+/* Logo */
+.navbar-logo {
+  color: #fff;
+  font-size: 1.4rem;
+  font-weight: bold;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  white-space: nowrap;
+}
+.navbar-logo:hover {
+  color: #ffcc00;
+}
+
+/* Links */
+.navbar-links {
+  display: flex;
+  gap: 1.5rem;
+}
+.navbar-links a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+.navbar-links a:hover,
+.navbar-links a.active {
+  color: #ffcc00;
+}
+
+.navbar-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  color: #fff;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Responsive para móviles y tablets */
+@media (max-width: 900px) {
+  .navbar {
+    padding: 0.8rem 0;
+  }
+  .navbar-container {
+    padding: 0 0.5rem;        /* Reduce el padding lateral */
+    width: 100%;
+    max-width: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar-toggle {
+    display: block;
+  }
+  .navbar-links {
+    position: fixed;
+    top: 60px;
+    right: 0;
+    background: #003366;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 220px;
+    min-width: 190px;
+    max-width: 100vw;
+    height: calc(100vh - 60px);
+    padding: 1rem;
+    gap: 1rem;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+    box-shadow: -2px 2px 6px rgba(0,0,0,0.2);
+    overflow-y: auto;
+    z-index: 1500;
+    border-bottom-left-radius: 10px;
+  }
+  .navbar-links.active {
+    transform: translateX(0);
+  }
+  .navbar-links a {
+    width: 100%;
+    min-width: 100px;
+    padding: 0.5rem 1rem;
+    white-space: nowrap;
+  }
+}
+
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}

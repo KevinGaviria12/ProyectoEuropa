@@ -1,0 +1,70 @@
+<app-header></app-header>
+
+<section class="page-destinations">
+  <div class="div-text-destinations">
+    <h2>Cultura Gastronómica</h2>
+    <p>Descubre algunas comidas típicas de cada país o ciudad</p>
+  </div>
+
+  <div class="cards">
+
+    <!-- @for: Itera sobre cada plato en la listaPlatos -->
+    <!-- track plato.nombre: Angular usa el nombre del plato como identificador único -->
+    @for (plato of listaPlatos; track plato.nombre) {
+    <div class="card" [ngClass]="{ 
+          'plato-economico': plato.precio < 5000, 
+          'plato-premium': plato.precio > 7000 
+        }" [ngStyle]="{ 
+          'border': plato.precio > 7000 ? '3px solid gold' : '1px solid #ccc' 
+        }">
+
+      <!-- @if: Muestra la etiqueta solo si el precio del plato es menor a 5000 -->
+      @if (plato.precio < 5000) { <div class="oferta-badge">
+        🔥 Plato destacado
+    </div>
+    }
+
+    <!-- Imagen dinámica del plato -->
+    <img [src]="plato.imagen" [alt]="plato.nombre">
+
+    <div>
+      <h3>{{ plato.ciudad }}</h3>
+      <p>{{ plato.descripcion }}</p>
+
+      <!-- @switch: Evalúa la categoría del precio del plato -->
+      @switch (getCategoriaPrecio(plato.precio)) {
+
+      <!-- @case: Precio bajo -->
+      @case('bajo') {
+      <span class="price">
+        Económico: &#36;{{ plato.precio }} USD
+      </span>
+      }
+
+      <!-- @case: Precio medio -->
+      @case('medio') {
+      <span class="price">
+        Estándar: &#36;{{ plato.precio }} USD
+      </span>
+      }
+
+      <!-- @case: Precio alto -->
+      @case('alto') {
+      <span class="price">
+        Premium: &#36;{{ plato.precio }} USD
+      </span>
+      }
+
+      <!-- @default: Caso por defecto -->
+      @default {
+      <span class="price">
+        Desde &#36;{{ plato.precio }} USD
+      </span>
+      }
+      }
+    </div>
+  </div>
+  }
+
+  </div>
+</section>

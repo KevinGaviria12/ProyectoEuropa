@@ -1,0 +1,87 @@
+.hotels-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    text-align: center;
+}
+
+.title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 5rem;
+    color: #1a202c;
+}
+
+.hotels-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    justify-items: center;
+}
+
+.hotel-card {
+    background-color: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    width: 20rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.hotel-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.hotel-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.hotel-info {
+    padding: 1rem;
+    text-align: left;
+}
+
+.hotel-info h2 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    color: #2c5282;
+}
+
+.location {
+    font-size: 0.9rem;
+    color: #4a5568;
+    margin-bottom: 0.25rem;
+}
+
+.price {
+    font-weight: bold;
+    color: #2f855a;
+    margin-bottom: 1rem;
+}
+
+.book-btn {
+    background-color: #3182ce;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    transition: background-color 0.2s ease;
+}
+
+.book-btn:hover {
+    background-color: #2b6cb0;
+}
+
+/* Proyecto Europa hotel styling */
+.page-hotels { background:#f6f7fb; }
+.card-hotel { border-radius:20px; box-shadow:0 12px 28px rgba(0,0,0,.12); }
+.card-hotel h3{ color:#0b1e39; font-family:"Merriweather",serif; }
+.price { color:#0b1e39; font-weight:700; }
+.reserve-btn { background:#ffd166; color:#0b1e39; border:none; border-radius:9999px; padding:.7rem 1.3rem; }

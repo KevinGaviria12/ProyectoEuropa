@@ -1,0 +1,78 @@
+<!-- Componente del header -->
+<app-header></app-header>
+
+<div class="hotels-container">
+  <!-- Título principal -->
+  <h1 class="title">Hoteles de Europa</h1>
+
+  <div class="hotels-grid">
+
+    <!-- @for: Itera sobre cada hotel en la listaHoteles -->
+    <!-- track hotel.name: Angular usa el nombre del hotel como identificador único -->
+    @for (hotel of listaHoteles; track hotel.name) {
+
+    <div class="hotel-card" [ngClass]="{
+          'hotel-economico': hotel.price < 1000,
+          'hotel-premium': hotel.price > 2000
+        }" [ngStyle]="{
+          'border': hotel.price > 2000 ? '3px solid gold' : '1px solid #ccc'
+        }">
+
+      <!-- @if: Muestra la etiqueta solo si el hotel es caro -->
+      @if (hotel.price > 2500) {
+      <div class="exclusive-badge">
+        ⭐ Hotel Exclusivo
+      </div>
+      }
+
+      <!-- Imagen del hotel -->
+      <img [src]="hotel.image" [alt]="hotel.name" class="hotel-image" />
+
+      <div class="hotel-info">
+        <!-- Nombre del hotel -->
+        <h2>{{ hotel.name }}</h2>
+
+        <!-- Ubicación -->
+        <p class="location">{{ hotel.location }}</p>
+
+        <!-- @switch: Evalúa la categoría de precio del hotel -->
+        @switch (getCategoriaPrecio(hotel.price)) {
+
+        <!-- @case: Precio bajo -->
+        @case('bajo') {
+        <span class="price">
+          Económico: {{ hotel.price }} {{ hotel.currency }}
+        </span>
+        }
+
+        <!-- @case: Precio medio -->
+        @case('medio') {
+        <span class="price">
+          Estándar: {{ hotel.price }} {{ hotel.currency }}
+        </span>
+        }
+
+        <!-- @case: Precio alto -->
+        @case('alto') {
+        <span class="price">
+          Premium: {{ hotel.price }} {{ hotel.currency }}
+        </span>
+        }
+
+        <!-- @default: Caso por defecto -->
+        @default {
+        <span class="price">
+          Desde {{ hotel.price }} {{ hotel.currency }}
+        </span>
+        }
+        }
+
+        <!-- Botón de reserva -->
+        <a routerLink="/contacto">
+          <button class="book-btn">Reservar</button>
+        </a>
+      </div>
+    </div>
+    }
+  </div>
+</div>

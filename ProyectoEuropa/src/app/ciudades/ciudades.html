@@ -1,0 +1,60 @@
+<app-header></app-header>
+
+<div class="activities-container">
+  <h1 class="title">Ciudades Recomendadas</h1>
+
+  <div class="activities-grid">
+
+    @for (ciudad of listaCiudades; track ciudad.nombre) {
+    <div class="activity-card" [ngClass]="{
+          'destino-economico': ciudad.precio <= 6000, 
+          'destino-premium': ciudad.precio > 8000
+        }" [ngStyle]="{
+
+          'border': ciudad.precio > 7000 ? '3px solid gold' : '1px solid #ccc'
+        }">
+
+      @if (ciudad.precio < 5000) { <div class="oferta-badge">
+        🔥 Oferta Especial 
+    </div>
+
+    }
+
+    <img [src]="ciudad.imagen" [alt]="ciudad.nombre" class="activity-image" />
+
+    <div class="activity-info">
+      <h2>{{ ciudad.descripcion }}</h2>
+      <p class="location">{{ ciudad.ubicacion }}</p>
+
+      @switch (getCategoriaPrecio(ciudad.precio)) {
+      @case ('bajo') {
+      <p class="price">
+        Económico: ${{ ciudad.precio }} USD
+      </p>
+      }
+      @case ('medio') {
+      <p class="price">
+        Estándar: ${{ ciudad.precio }} USD
+      </p>
+      }
+      @case ('alto') {
+      <p class="price">
+        Premium: ${{ ciudad.precio }} USD
+      </p>
+      }
+      @default {
+      <p class="price">
+        Desde ${{ ciudad.precio }} USD
+      </p>
+      }
+      }
+
+      <a routerLink="/contacto">
+        <button class="book-btn" type="button">Reservar</button>
+      </a>
+    </div>
+  </div>
+  }
+
+</div>
+</div>

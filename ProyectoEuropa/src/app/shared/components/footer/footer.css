@@ -1,0 +1,84 @@
+.footer {
+  width: 100%;
+  background: linear-gradient(90deg, #003366, #0059b3);
+  color: #fff;
+  text-align: center;
+  padding: 0.6rem 1rem; /* antes era más grande, ahora más compacto */
+  font-size: 0.9rem;
+  position: relative;
+  bottom: 0;
+}
+
+.footer p {
+  margin: 0;
+}
+
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-logo {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: #ffcc00;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin: 1rem 0;
+  flex-wrap: wrap;
+}
+
+.footer-links a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover,
+.footer-links a.active {
+  color: #ffcc00;
+}
+
+.footer-copy {
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  color: #ddd;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .footer-links {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+}
+
+/* 🔗 Iconos redes sociales */
+.social-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.social-links img {
+  width: 24px;   /* 👈 controla el tamaño */
+  height: 24px;  /* 👈 controla el tamaño */
+  object-fit: contain;
+  cursor: pointer;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.social-links img:hover {
+  transform: scale(1.15);
+  filter: brightness(0) saturate(100%) invert(36%) sepia(81%) 
+          saturate(630%) hue-rotate(305deg) brightness(96%) contrast(98%);
+}
