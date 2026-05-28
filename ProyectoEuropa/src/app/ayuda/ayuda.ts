@@ -6,6 +6,7 @@ import { Header } from '../shared/components/header/header';
 @Component({
   selector: 'app-ayuda',
   standalone: true,
+  
   imports: [CommonModule, RouterModule, Header],
   templateUrl: './ayuda.html',
   styleUrls: ['./ayuda.css']
