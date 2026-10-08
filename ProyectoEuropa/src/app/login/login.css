@@ -1,13 +1,28 @@
 .login-wrapper {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 2rem 1rem;
-  min-height: calc(100vh - 140px); /* Header (70px) + Footer (70px) aprox */
+  min-height: calc(100vh - 75px);
+  height: auto;
   box-sizing: border-box;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  isolation: isolate;
+}
+
+.login-wrapper::before {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: rgba(0, 35, 75, 0.38);
+  content: '';
 }
 
 .login-card {
+  position: relative;
   width: 100%;
   max-width: 420px;
   background: #f4f8fc;
@@ -39,6 +54,38 @@
   box-sizing: border-box;
 }
 
+.password-field {
+  position: relative;
+}
+
+.password-field input {
+  padding-right: 3rem;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 0.7rem;
+  top: 50%;
+  transform: translateY(-25%);
+  border: 0;
+  background: transparent;
+  color: #003366;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0.2rem;
+}
+
+.eye-icon {
+  display: block;
+  width: 1.35rem;
+  height: 1.35rem;
+  fill: none;
+  stroke: #003366;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
+}
+
 .btn {
   margin-top: 1.2rem;
   width: 100%;
@@ -52,6 +99,7 @@
   box-shadow: 0 4px 10px rgba(0,0,0,0.12);
 }
 .btn:hover { opacity: 0.95; transform: translateY(-1px); transition: 0.12s; }
+.btn:disabled { opacity: 0.65; cursor: wait; transform: none; }
 
 .message {
   margin-top: 1rem;
@@ -60,24 +108,12 @@
   text-align: center;
 }
 
-/* link-style button */
-.switch { text-align: center; margin-top: 0.8rem; }
-.link {
-  background: none;
-  border: none;
-  color: #0059b3;
-  cursor: pointer;
-  font-weight: 600;
-  text-decoration: underline;
-  padding: 0.25rem 0;
-}
-
 /* Responsive general */
 @media (max-width: 600px) {
   .login-card { padding: 1rem; }
   .login-wrapper {
     padding: 1rem 0.5rem;
-    min-height: calc(100vh - 140px); /* mantiene centrado en mobile */
+    min-height: 100%;
   }
 }
 
@@ -86,7 +122,7 @@
   .login-wrapper {
     justify-content: center;
     align-items: center;
-    min-height: calc(100vh - 140px);
+    min-height: 100%;
     padding: 1rem;
   }
 

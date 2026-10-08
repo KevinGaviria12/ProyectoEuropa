@@ -53,6 +53,23 @@
   color: #ffcc00;
 }
 
+.logout-button {
+  border: 1px solid #ffd166;
+  border-radius: 999px;
+  padding: 0.35rem 0.8rem;
+  background: transparent;
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.logout-button:hover {
+  background: #ffd166;
+  color: #003366;
+}
+
 .navbar-toggle {
   display: none;
   background: none;
@@ -107,6 +124,11 @@
     min-width: 100px;
     padding: 0.5rem 1rem;
     white-space: nowrap;
+  }
+  .logout-button {
+    width: 100%;
+    text-align: left;
+    padding: 0.5rem 1rem;
   }
 }
 

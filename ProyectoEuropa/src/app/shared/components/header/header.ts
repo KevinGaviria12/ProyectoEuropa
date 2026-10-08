@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -9,5 +10,16 @@ import { RouterModule } from '@angular/router';
   styleUrls: ['./header.css']
 })
 export class Header {
-  isMenuOpen = false;  
+  isMenuOpen = false;
+
+  constructor(
+    private readonly authService: AuthService,
+    private readonly router: Router
+  ) {}
+
+  logout(): void {
+    this.authService.logout();
+    this.isMenuOpen = false;
+    this.router.navigate(['/login']);
+  }
 }

@@ -14,6 +14,34 @@ html, body {
   box-sizing: inherit;
 }
 
+app-root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+app-content {
+  display: block;
+  flex: 1 0 auto;
+  min-height: 0;
+}
+
+app-login {
+  display: block;
+}
+
+app-content:has(app-login) {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+}
+
+app-content:has(app-login) app-login {
+  display: flex;
+  flex: 1 1 auto;
+}
+
 .header-navbar {
   width: 100%;
   background: #1356a5;
@@ -203,5 +231,3 @@ html, body {
     gap: 0.8rem;
   }
 }
-
-
